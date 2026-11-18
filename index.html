@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLOBAL TARGET PROFILER // v8.0 ELITE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="glitch" data-text="> SYSTEM_ANALYTICS // FULL_TARGET_DUMP">> SYSTEM_ANALYTICS // FULL_TARGET_DUMP</h1>
+            <div class="status-badge" id="badgeStatus">SCANNING...</div>
+        </div>
+
+        <div class="progress-box">
+            <div class="progress-bar-bg">
+                <div class="progress-bar" id="pBar"></div>
+            </div>
+        </div>
+
+        <div class="terminal" id="termLog">
+            [INIT] Target connection registered...<br>
+        </div>
+
+        <!-- A részletes adatok rácsos elrendezése -->
+        <div class="grid-section" id="dossier">
+            
+            <!-- 1. Hálózati adatok -->
+            <div class="card">
+                <h3>NETWORK & GEO</h3>
+                <div class="data-row"><span class="data-label">Public IP:</span><span class="data-value" id="netIP">Lekérés...</span></div>
+                <div class="data-row"><span class="data-label">ISP / Szolgáltató:</span><span class="data-value" id="netISP">Lekérés...</span></div>
+                <div class="data-row"><span class="data-label">Város / Régió:</span><span class="data-value" id="netCity">Lekérés...</span></div>
+                <div class="data-row"><span class="data-label">Ország:</span><span class="data-value" id="netCountry">Lekérés...</span></div>
+                <div class="data-row"><span class="data-label">Nyitott Portok:</span><span class="data-value" style="color:#ff0055;">21, 80, 443, 8080 (Vulnerábilis)</span></div>
+            </div>
+
+            <!-- 2. Hardver & Rendszer -->
+            <div class="card">
+                <h3>HARDWARE SPECS</h3>
+                <div class="data-row"><span class="data-label">Platform / OS:</span><span class="data-value" id="hwOS">Ismeretlen</span></div>
+                <div class="data-row"><span class="data-label">Processzor magok:</span><span class="data-value" id="hwCPU">Ismeretlen</span></div>
+                <div class="data-row"><span class="data-label">Becsült RAM:</span><span class="data-value" id="hwRAM">Ismeretlen</span></div>
+                <div class="data-row"><span class="data-label">Képernyőfelbontás:</span><span class="data-value" id="hwScreen">Ismeretlen</span></div>
+                <div class="data-row"><span class="data-label">Aktív szálak:</span><span class="data-value">142 Background Tasks</span></div>
+            </div>
+
+            <!-- 3. Böngésző & Szoftver -->
+            <div class="card">
+                <h3>BROWSER FINGERPRINT</h3>
+                <div class="data-row"><span class="data-label">Böngésző motor:</span><span class="data-value" id="swBrowser">Ismeretlen</span></div>
+                <div class="data-row"><span class="data-label">Nyelv / Terület:</span><span class="data-value" id="swLang">Ismeretlen</span></div>
+                <div class="data-row"><span class="data-label">Mentett Cookie-k:</span><span class="data-value" id="swCookiesCount">Számolás...</span></div>
+                <div class="data-row"><span class="data-label">WebGL / Canvas:</span><span class="data-value" style="color:#00ff66;">Megkerülve</span></div>
+                <div class="data-row"><span class="data-label">Adatvédelem (VPN):</span><span class="data-value" style="color:#ff0055;">VPN / Proxy Nincs</span></div>
+            </div>
+
+            <!-- 4. Radar & Biztonsági Mátrix -->
+            <div class="card radar-card">
+                <h3>SATELLITE RADAR LOCK</h3>
+                <div class="radar-container">
+                    <div class="radar-sweep"></div>
+                    <div class="radar-dot"></div>
+                </div>
+                <div class="data-row" style="margin-top:10px;"><span class="data-label">Jel erősség:</span><span class="data-value">98% (Stabil kapcsolat)</span></div>
+                <div class="data-row"><span class="data-label">Kockázati szint:</span><span class="data-value" style="color:#ff0055;">KRITIKUS (Azonnali log)</span></div>
+            </div>
+
+            <!-- 5. Térkép / Lokációs vizualizáció -->
+            <div class="card map-card">
+                <h3>SATELLITE MAP & GEO-LOCK</h3>
+                <div class="map-container">
+                    <iframe id="mapFrame" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src=""></iframe>
+                </div>
+                <div class="data-row" style="margin-top: 8px;">
+                    <span class="data-label">Lokációs Státusz:</span>
+                    <span class="data-value" style="color: #00ff66;">Pozíció Triangulálva (Régió szinten)</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Extra interaktív gomb a végén -->
+        <div class="action-box" id="actionBox">
+            <button id="panicBtn" onclick="triggerPanic()">SYSTEM OVERRIDE / LOGOUT</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+body {
+    background-color: #02040a;
+    color: #00ff66;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.2s ease;
+}
+
+.container {
+    width: 900px;
+    max-width: 100%;
+    background: rgba(3, 7, 18, 0.95);
+    border: 2px solid #00ff66;
+    box-shadow: 0 0 35px rgba(0, 255, 102, 0.3);
+    padding: 25px;
+    border-radius: 6px;
+}
+
+.header {
+    border-bottom: 1px dashed #00ff66;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 { 
+    font-size: 15px; 
+    letter-spacing: 2px; 
+    position: relative;
+    color: #00ff66;
+    animation: glitchSkew 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitchSkew {
+    0%, 90%, 100% { transform: skew(0deg); text-shadow: none; }
+    92% { transform: skew(-10deg); text-shadow: -2px 0 #ff0055, 2px 0 #00ffff; }
+    94% { transform: skew(10deg); text-shadow: 2px 0 #ff0055, -2px 0 #00ffff; }
+    96% { transform: skew(0deg); }
+}
+
+.status-badge {
+    background: #ff0055; 
+    color: white; 
+    padding: 4px 10px;
+    font-size: 11px; 
+    border-radius: 4px; 
+    font-weight: bold;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse { 
+    0% { opacity: 1; } 
+    50% { opacity: 0.3; } 
+    100% { opacity: 1; } 
+}
+
+.terminal {
+    height: 130px;
+    background: #000;
+    border: 1px solid #1e293b;
+    padding: 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    overflow-y: hidden;
+    margin-bottom: 20px;
+    color: #38bdf8;
+}
+
+.grid-section {
+    display: none; /* Rejtve amíg le nem fut a folyamat */
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.card {
+    border: 1px solid #1e293b;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 12px;
+    border-radius: 4px;
+}
+
+.map-card {
+    grid-column: span 2;
+}
+
+.card h3 {
+    font-size: 13px;
+    color: #38bdf8;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #1e293b;
+    padding-bottom: 4px;
+    letter-spacing: 1px;
+}
+
+.data-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.data-label { color: #64748b; }
+.data-value { color: #f8fafc; font-weight: bold; text-align: right; }
+
+.progress-box {
+    margin-bottom: 20px;
+}
+
+.progress-bar-bg {
+    width: 100%; 
+    background: #0f172a; 
+    border: 1px solid #1e293b; 
+    height: 16px; 
+    border-radius: 3px; 
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%; 
+    height: 100%; 
+    background: linear-gradient(90deg, #00ff66, #00ffff);
+    transition: width 0.05s linear;
+}
+
+/* Radar animáció doboz */
+.radar-card {
+    position: relative;
+}
+
+.radar-container {
+    width: 100%;
+    height: 90px;
+    background: #000;
+    border: 1px solid #00ff66;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.radar-sweep {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 255, 102, 0.3);
+    position: absolute;
+    background: conic-gradient(from 0deg at 50% 50%, rgba(0, 255, 102, 0.4) 0deg, transparent 60deg);
+    animation: rotateRadar 2s linear infinite;
+}
+
+.radar-dot {
+    width: 6px;
+    height: 6px;
+    background: #ff0055;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ff0055;
+    position: absolute;
+    top: 40%;
+    left: 60%;
+    animation: blinkDot 1s infinite alternate;
+}
+
+@keyframes rotateRadar {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes blinkDot {
+    from { opacity: 0.2; }
+    to { opacity: 1; }
+}
+
+/* Térkép stílusok (javítva a teljes kitöltésre) */
+.map-container {
+    width: 100%; 
+    height: 160px; 
+    background: #000; 
+    border: 1px solid #1e293b; 
+    border-radius: 4px; 
+    overflow: hidden; 
+    position: relative;
+}
+
+#mapFrame {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: none;
+    filter: invert(90%) hue-rotate(180deg) brightness(90%);
+}
+
+/* Akció gomb */
+.action-box {
+    margin-top: 20px;
+    text-align: center;
+    display: none;
+}
+
+#panicBtn {
+    background: #ff0055;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 13px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 0, 85, 0.5);
+    transition: 0.2s;
+}
+
+#panicBtn:hover {
+    background: #cc0044;
+    box-shadow: 0 0 25px rgba(255, 0, 85, 0.8);
+}
+
+/* Mobil nézet javítás */
+@media (max-width: 650px) {
+    .grid-section {
+        grid-template-columns: 1fr;
+    }
+    .map-card {
+        grid-column: span 1;
+    }
+}
